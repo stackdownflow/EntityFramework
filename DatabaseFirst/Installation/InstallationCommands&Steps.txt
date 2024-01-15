@@ -1,0 +1,45 @@
+1. Verify if .Net CLI :-
+
+dotnet --info
+
+2. Installing dotnet-ef :-
+
+dotnet tool install --globally dotnet-ef
+
+3. Updating dotnet-ef :-
+
+dotnet tool update --globally dotnet-ef
+
+4. Install below Nuget packages using Nuget Package Manager :-
+
+   Microsoft.EntityFrameworkCore
+   Microsoft.EntityFrameworkCore.Design
+   Microsoft.EntityFrameworkCore.SqlServer
+   Microsoft.Extensions.Configuration
+   Microsoft.Extensions.Configuration.Json
+
+5. Using SSMS - Create New Database "Employee" and Create "Designation and "Employees" table using TABLE_Scripts.sql file.
+
+6. Navigate to project root path and execute Scaffolding Database to Entities & Context command :-
+
+   dotnet ef dbcontext scaffold "Server=localhost;Initial Catalog=Employee;Integrated Security=True;Trust Server Certificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Entities --context-dir "Context" -c "EmpDbContext" -f
+
+7. Once scaffolding is done insert seed data in Designation & Employee table using TABLE_Scripts.sql file using SSMS.
+
+8. Remove protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) under EmpDbContext file for security purpose.
+
+9. Add new file "appsettings.json" in root directory of your project.
+
+10. Select the file from Solution Explorer, then right click -> Click on Properties
+
+11. Under Properties Widget change the value of "Copy to Output Directory" to "Copy if newer" instead of "Do not copy".
+
+12. Under appsettings.json write below section :-
+
+   "ConnectionStrings": {
+  	"localConnection": "Server=localhost;Initial Catalog=Employee;Integrated Security=True;Trust Server Certificate=true"
+}
+
+13. Add below package using .Net CLI
+
+   dotnet add package ConsoleTables --version 2.4.2

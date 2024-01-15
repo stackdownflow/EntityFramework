@@ -1,0 +1,22 @@
+1. Install below Nuget packages using Nuget Package Manager :-
+
+   Microsoft.EntityFrameworkCore
+   Microsoft.EntityFrameworkCore.SqlServer
+   Microsoft.Extensions.Configuration
+   Microsoft.Extensions.Configuration.Json
+
+2. Add new file "appsettings.json" in root directory of your project.
+
+3. Select the file from Solution Explorer, then right click -> Click on Properties
+
+4. Under Properties Widget change the value of "Copy to Output Directory" to "Copy if newer" instead of "Do not copy".
+
+5. Under appsettings.json write below section :-
+
+   "ConnectionStrings": {
+  	"localConnection": "Server=localhost;Initial Catalog=Employee;Integrated Security=True;Trust Server Certificate=true"
+}
+
+6. Add below package using .Net CLI
+
+   dotnet add package ConsoleTables --version 2.4.2

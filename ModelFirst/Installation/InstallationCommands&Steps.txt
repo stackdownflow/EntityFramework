@@ -1,0 +1,13 @@
+Steps to Create this Solution from scratch :
+
+1. Create Console App using .Net Framework (not .Net Core)
+2. Add ADO.net Entity Model to your project
+3. Once .edmx file is created, design your tables and their associations respectively.
+4. Create an empty database in SSMS.
+5. After model is ready right click on designed file and select "Generate Database from Model"
+5. Then under Connection setting make sure you selected newly created empty database.
+6. This will generate "Employee.edmx.sql", on running this file it will update your empty database as per your designer file.
+7. Now your Database is ready.
+8. To generate C# entities for corresponding tables right click on designer file and select "Add Code Generation Item".
+9. Above step will generate DBContext and entities.
+10. Install ConsoleTables [version 2.4.2] using Nuget Package Manager.

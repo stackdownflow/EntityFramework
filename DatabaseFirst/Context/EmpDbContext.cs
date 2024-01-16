@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using DatabaseFirst.Entities;
+﻿using DatabaseFirst.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DatabaseFirst.Context;
@@ -24,11 +22,10 @@ public partial class EmpDbContext : DbContext
     {
         modelBuilder.Entity<Designation>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__DESIGNAT__3214EC2711097CF9");
+            entity.HasKey(e => e.DesignationId).HasName("PK__DESIGNAT__BABD60DEBB62F6D4");
 
-            entity.ToTable("DESIGNATION");
+            entity.ToTable("DESIGNATIONS");
 
-            entity.Property(e => e.Id).HasColumnName("ID");
             entity.Property(e => e.Name)
                 .HasMaxLength(100)
                 .IsUnicode(false)
@@ -37,7 +34,7 @@ public partial class EmpDbContext : DbContext
 
         modelBuilder.Entity<Employee>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__EMPLOYEE__3214EC27D6D2568D");
+            entity.HasKey(e => e.Id).HasName("PK__EMPLOYEE__3214EC27AEDFEA25");
 
             entity.ToTable("EMPLOYEES");
 
@@ -50,7 +47,6 @@ public partial class EmpDbContext : DbContext
                 .HasMaxLength(25)
                 .IsUnicode(false)
                 .HasColumnName("CITY");
-            entity.Property(e => e.Designation).HasColumnName("DESIGNATION");
             entity.Property(e => e.Email)
                 .HasMaxLength(50)
                 .IsUnicode(false)
@@ -64,9 +60,9 @@ public partial class EmpDbContext : DbContext
                 .IsUnicode(false)
                 .HasColumnName("LASTNAME");
 
-            entity.HasOne(d => d.DesignationNavigation).WithMany(p => p.Employees)
-                .HasForeignKey(d => d.Designation)
-                .HasConstraintName("FK__EMPLOYEES__DESIG__398D8EEE");
+            entity.HasOne(d => d.Designation).WithMany(p => p.Employees)
+                .HasForeignKey(d => d.DesignationId)
+                .HasConstraintName("FK__EMPLOYEES__Desig__4316F928");
         });
 
         OnModelCreatingPartial(modelBuilder);

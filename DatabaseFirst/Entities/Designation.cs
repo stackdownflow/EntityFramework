@@ -5,7 +5,7 @@ namespace DatabaseFirst.Entities;
 
 public partial class Designation
 {
-    public int Id { get; set; }
+    public int DesignationId { get; set; }
 
     public string Name { get; set; } = null!;
 

@@ -1,6 +1,6 @@
-CREATE TABLE DESIGNATION
+CREATE TABLE DESIGNATIONS
 (
-ID INT IDENTITY(1,1) PRIMARY KEY,
+DesignationId INT IDENTITY(1,1) PRIMARY KEY,
 NAME VARCHAR(100) NOT NULL
 );
 
@@ -12,10 +12,10 @@ LASTNAME VARCHAR(25) NOT NULL,
 ADDRESS VARCHAR(100) NOT NULL,
 CITY VARCHAR(25) NOT NULL,
 EMAIL VARCHAR(50) NOT NULL,
-DESIGNATION INT FOREIGN KEY REFERENCES DESIGNATION(ID)
+DesignationId INT FOREIGN KEY REFERENCES DESIGNATIONS(DesignationId)
 );
 
-INSERT INTO DESIGNATION VALUES('Executive Manager'),('Quality Analyst'),('Human Resource'),('Sr. Manager'),('Data Analyst'),('Sr. Analyst')
+INSERT INTO DESIGNATIONS VALUES('Executive Manager'),('Quality Analyst'),('Human Resource'),('Sr. Manager'),('Data Analyst'),('Sr. Analyst')
 
 INSERT INTO EMPLOYEES VALUES('John', 'Doe', '53 Avenue Street, NJ','New Jersey', 'john.doe@deloitte.com',1);
 INSERT INTO EMPLOYEES VALUES('Jane', 'Doe', '54 Avenue Street, NJ','New Jersey', 'jane.doe@deloitte.com',1);

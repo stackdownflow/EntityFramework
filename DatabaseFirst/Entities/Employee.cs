@@ -17,7 +17,7 @@ public partial class Employee
 
     public string Email { get; set; } = null!;
 
-    public int? Designation { get; set; }
+    public int? DesignationId { get; set; }
 
-    public virtual Designation? DesignationNavigation { get; set; }
+    public virtual Designation? Designation { get; set; }
 }

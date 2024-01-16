@@ -22,7 +22,7 @@ dotnet tool update --globally dotnet-ef
 
 6. Navigate to project root path and execute Scaffolding Database to Entities & Context command :-
 
-   dotnet ef dbcontext scaffold "Server=localhost;Initial Catalog=Employee;Integrated Security=True;Trust Server Certificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Entities --context-dir "Context" -c "EmpDbContext" -f
+   dotnet ef dbcontext scaffold "Server=localhost;Initial Catalog=Employee_DF;Integrated Security=True;Trust Server Certificate=true" Microsoft.EntityFrameworkCore.SqlServer -o Entities --context-dir "Context" -c "EmpDbContext" -f
 
 7. Once scaffolding is done insert seed data in Designation & Employee table using TABLE_Scripts.sql file using SSMS.
 
@@ -37,7 +37,7 @@ dotnet tool update --globally dotnet-ef
 12. Under appsettings.json write below section :-
 
    "ConnectionStrings": {
-  	"localConnection": "Server=localhost;Initial Catalog=Employee;Integrated Security=True;Trust Server Certificate=true"
+  	"localConnection": "Server=localhost;Initial Catalog=Employee_DF;Integrated Security=True;Trust Server Certificate=true"
 }
 
 13. Add below package using .Net CLI

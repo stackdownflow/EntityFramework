@@ -1,8 +1,6 @@
 ﻿using DatabaseFirst.Context;
 using DatabaseFirst.Entities;
 using DatabaseFirst.Models;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
 
 namespace DatabaseFirst.Repositories
 {
@@ -24,7 +22,7 @@ namespace DatabaseFirst.Repositories
                 Address = e.Address,
                 City = e.City,
                 Email = e.Email,
-                Designation = e.DesgId
+                DesignationId = e.DesgId
             };
             var newRecord = _empDbContext.Add(employee);
             _empDbContext.SaveChanges();
@@ -209,8 +207,8 @@ namespace DatabaseFirst.Repositories
             if (isLambdaQuery)
                 return _empDbContext.Employees.Join(
                             _empDbContext.Designations,
-                            e => e.Designation,
-                            d => d.Id,
+                            e => e.DesignationId,
+                            d => d.DesignationId,
                             (e, d) => new EmployeeDto()
                             {
                                 Id = e.Id,
@@ -223,7 +221,7 @@ namespace DatabaseFirst.Repositories
                             }).ToList();
 
             return (from e in _empDbContext.Employees
-                    join d in _empDbContext.Designations on e.Designation equals d.Id
+                    join d in _empDbContext.Designations on e.DesignationId equals d.DesignationId
                     select new EmployeeDto()
                     {
                         Id = e.Id,

@@ -9,9 +9,17 @@ namespace CodeFirst.Context
             using (var context = new EmpDbContext())
             {
                 context.Database.EnsureDeleted();
-                context.Database.EnsureCreated();
+                context.Database.EnsureCreated();                
 
-                List<Entities.Designation> desgList = new List<Entities.Designation>()
+                InsertDesignationData(context);
+
+                InsertEmployeeData(context);
+            }            
+        }
+
+        private static void InsertDesignationData(EmpDbContext context)
+        {
+            List<Entities.Designation> desgList = new List<Entities.Designation>()
                     {
                         new Entities.Designation() { Name = "Executive Manager" },
                         new Entities.Designation() { Name = "Quality Analyst" },
@@ -21,10 +29,13 @@ namespace CodeFirst.Context
                         new Entities.Designation() { Name = "Sr. Analyst" }
                     };
 
-                context.Designations.AddRange(desgList);
-                context.SaveChanges();
+            context.Designations.AddRange(desgList);
+            context.SaveChanges();
+        }
 
-                List<Entities.Employee> empList = new List<Entities.Employee>()
+        private static void InsertEmployeeData(EmpDbContext context)
+        {
+            List<Entities.Employee> empList = new List<Entities.Employee>()
                     {
                        new Entities.Employee() { Firstname = "John", Lastname ="Doe", Address = "53 Avenue Street, NJ", City = "New Jersey", Email = "john.doe@deloitte.com", DesignationId = (int)Designation.Manager},
                        new Entities.Employee() { Firstname = "Jane", Lastname ="Doe", Address = "54 Avenue Street, NJ", City = "New Jersey", Email = "jane.doe@deloitte.com", DesignationId = (int)Designation.Manager },
@@ -35,10 +46,8 @@ namespace CodeFirst.Context
                        new Entities.Employee() { Firstname = "Sean", Lastname = "Hunter", Address = "1352 Goff Avenue, NY", City = "New York", Email = "sean.hunter@deloitte.com", DesignationId =(int) Designation.SrManager}
                     };
 
-                context.Employees.AddRange(empList);
-                context.SaveChanges();
-
-            }
+            context.Employees.AddRange(empList);
+            context.SaveChanges();
         }
     }
 }
